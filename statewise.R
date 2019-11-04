@@ -1,5 +1,6 @@
 cen=read.csv(file.choose())
 cen
+#test
 
 jk=cen[1:22,4:118]
 hp=cen[23:34,4:118]
