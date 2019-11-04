@@ -1,6 +1,5 @@
 cen=read.csv(file.choose())
 cen
-#test
 
 jk=cen[1:22,4:118]
 hp=cen[23:34,4:118]
@@ -72,26 +71,8 @@ meg1=apply(meg,2,sum)
 asm1=apply(asm,2,sum)
 wb1=apply(wb,2,sum)
 
-a=c(ker1[1],wb1[1],asm1[1],trp1[1])
-barplot(a,col=rainbow(4))
-pie(a,col=rainbow(4))
-hist(a)
 
-barplot(a,b)
-hist(ker1[1],wb1[1],asm1[1])
+censu=data.frame(wb1,asm1,meg1,trp1,man1,nld1,arp1,sik1,bih1,up1,raj1,del1,hryn1,utk1,chdg1,pjb1,hp1,jk1,jkd1,ors1,chth1,and1,pon1,tn1,lak1,ker1,goa1,ktka1,ap1,mhr1,dd1,guj1,mp1)
 
-pairs(~cen$Population+cen$Literate+cen$Workers)
+cens1=as.data.frame(t(censu))
 
-a=c(10,10,20,10,10,24,60,40,80,60,24,80,10,75,100)
-hist(a,col=rainbow(length(a)))
-boxplot(cen$Population~cen$Literate)
-a=matrix(c(1,1,2,15,4,3,10,7,1),3,3)
-heatmap(scale(mtcars))
-co
-
-
-
-
-
-statewise=list(c(sik,pon,goa))
-class(statewise)
