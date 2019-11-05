@@ -229,6 +229,41 @@ p <- plot_ly(y, labels = text, type = 'pie',values = x,
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 p
 
+############################################################################################################################################################
+############################################################# Overall Working Status #######################################################################
+############################################################################################################################################################
+q=((sum(cen$Male_Workers)/sum(cen$Workers))*100)
+r=((sum(cen$Female_Workers)/sum(cen$Workers))*100)
+s=((sum(cen$Main_Workers)/sum(cen$Workers))*100)
+t=((sum(cen$Marginal_Workers)/sum(cen$Workers))*100)
+u=((sum(cen$Non_Workers)/sum(cen$Workers))*100)
+v=((sum(cen$Cultivator_Workers)/sum(cen$Workers))*100)
+w=((sum(cen$Agricultural_Workers)/sum(cen$Workers))*100)
+x=((sum(cen$Household_Workers)/sum(cen$Workers))*100)
+y=((sum(cen$Other_Workers)/sum(cen$Workers))*100)
+x=c(q,r,s,t,u,v,w,x,y)
+
+work=c("Male","Female","Main","Marginal","Non Workers","Cultivator","Agricultural","House Hold","Other")
+y=data.frame(x)
+library(plotly)
+colors <- rainbow(length(text))
+
+p <- plot_ly(y, labels = work, type = 'pie',values = x,
+             textposition = 'outside',
+             textinfo = 'label+percent',
+             insidetextfont = list(color = '#FFFFFF'),
+             hoverinfo = 'text',
+             marker = list(colors = colors,
+                           line = list(color = '#FFFFFF', width = 2)),
+             showlegend = TRUE)%>%
+  layout(title = 'Working Status in India',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+p
+
+
+
+
 
 
 
