@@ -1,5 +1,5 @@
+install.packages("plotly")
 cen=read.csv(file.choose())
-cen
 
 jk=cen[1:22,4:118]
 hp=cen[23:34,4:118]
@@ -75,4 +75,86 @@ wb1=apply(wb,2,sum)
 censu=data.frame(wb1,asm1,meg1,trp1,man1,nld1,arp1,sik1,bih1,up1,raj1,del1,hryn1,utk1,chdg1,pjb1,hp1,jk1,jkd1,ors1,chth1,and1,pon1,tn1,lak1,ker1,goa1,ktka1,ap1,mhr1,dd1,guj1,mp1)
 
 cens1=as.data.frame(t(censu))
+
+st_name=c("West Bengal","Assam","Meghalaya","Tripura","Manipur","Nagaland","Arunachal Pradesh","Sikkim","Bihar","Uttar Pradesh","Rajasthan","Delhi","Haryana","Utharkhand","Chandigarh","Punjab","Himachal Pradesh","Jammu & Kashmir","Jharkhand","Orissa","Chatthisgarh","Andaman","POndicherry","Tamil Nadu","Laksh","Kerala","Goa","Karnataka","Andhra Pradesh","Maharashtra","DAman&Diu","Gujarat","Madhya Pradesh")
+
+#male+female pop
+
+pop=censu[1,1:33]
+mal=censu[2,1:33]
+fem=censu[3,1:33]
+
+z1=(mal/pop)*100
+z2=(fem/pop)*100
+
+
+In_states=st_name
+zn=unlist(z1)
+am=unlist(z2)
+dat=data.frame(st_name,zn,am)
+dat
+p=plot_ly(dat, x = ~In_states, y = ~zn, type = 'bar', name = 'MALE',text=zn,textposition='auto') %>%
+  add_trace(y = ~am, name = 'FEMALE') %>%
+  layout(title="TOTAL POPULATION",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'group')
+p
+
+q=plot_ly(dat, x = ~In_states, y = ~zn, type = 'bar', name = 'MALE',text=zn,textposition='auto') %>%
+  add_trace(y = ~am, name = 'FEMALE') %>%
+  layout(title="TOTAL POPULATION",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'stack')
+q
+
+
+
+
+newpop1=rbind(z1,z2)
+newpop=matrix(unlist(newpop1),2,15)
+
+barplot(newpop,names.arg = st_name[1:15],main = "Male : Female Population",xlab = "States",ylab = "% of Total Population",space = 1)
+
+#------------------------------------------------
+
+#rura+urban households
+
+library(plotly)
+
+th=censu[37,1:33]
+rh=censu[35,1:33]
+uh=censu[36,1:33]
+
+z1=(rh/th)*100
+z2=(uh/th)*100
+
+
+
+In_states=st_name
+zn=unlist(z1)
+am=unlist(z2)
+dat=data.frame(st_name,zn,am)
+dat
+p=plot_ly(dat, x = ~In_states, y = ~zn, type = 'bar', name = 'RURAL',text=zn,textposition='auto') %>%
+  add_trace(y = ~am, name = 'URBAN') %>%
+  layout(title="HOUSEHOLDS",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'group')
+p
+
+q=plot_ly(dat, x = ~In_states, y = ~zn, type = 'bar', name = 'RURAL',text=zn,textposition='auto') %>%
+  add_trace(y = ~am, name = 'URBAN') %>%
+  layout(title="HOUSEHOLDS",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'stack')
+q
+
+
+
+newh1=rbind(z1,z2)
+newh=matrix(unlist(newh1),2,33)
+newh
+
+barplot(newh,names.arg = st_name[1:33],main="Households",xlab = "States",ylab = "% of Households",space = 1,col = rainbow(2))
+legend("topright",c("rural","urban"),fill = rainbow(2))
+
+
+
+#-----------------------------------------------------------------------------------
+
+
+
+
 
