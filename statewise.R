@@ -260,7 +260,14 @@ p <- plot_ly(y, labels = work, type = 'pie',values = x,
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 p
-
+############household
+p <- dat %>% plot_ly() %>%add_trace(x = ~In_states, y = ~zn, type = 'bar', text = zn, textposition = 'auto',name="RURAL") %>% add_trace(x = ~In_states, y = ~am, type = 'bar', text = am, textposition = 'auto',name="URBAN") %>%
+ layout(title="HOUSEHOLDS",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'group')
+p
+population
+p <- dat %>% plot_ly() %>%add_trace(x = ~In_states, y = ~zn, type = 'bar', text = zn, textposition = 'auto',name="MALE") %>% add_trace(x = ~In_states, y = ~am, type = 'bar', text = am, textposition = 'auto',name="FEMALE") %>%
+ layout(title="POPULATION",xaxis = list(title = "STATES and UT"),yaxis = list(title = "PERCENTAGE"), barmode = 'stack')
+p
 
 
 
