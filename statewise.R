@@ -153,6 +153,81 @@ legend("topright",c("rural","urban"),fill = rainbow(2))
 
 
 #-----------------------------------------------------------------------------------
+############################################################################################################################################################
+############################################################# overAll Religion Pie Chart ###################################################################
+############################################################################################################################################################
+x=c(
+  ((sum(cen$Muslims)/sum(cen$Population))*100),((sum(cen$Hindus)/sum(cen$Population))*100),
+  ((sum(cen$Christians)/sum(cen$Population))*100),((sum(cen$Sikhs)/sum(cen$Population))*100),
+  ((sum(cen$Buddhists)/sum(cen$Population))*100),((sum(cen$Jains)/sum(cen$Population))*100),
+  ((sum(cen$Others_Religions)/sum(cen$Population))*100),((sum(cen$Religion_Not_Stated)/sum(cen$Population))*100))
+religions=c("Muslims","Hindus","Christains","Sikhs","Buddhists","Jains","Other Religions","Religion Not Stated")
+y=data.frame(x)
+library(plotly)
+colors <- rainbow(length(text))
+
+p <- plot_ly(y, labels = religions, type = 'pie',values = x,
+             textposition = 'outside',
+             textinfo = 'label+percent',
+             insidetextfont = list(color = '#FFFFFF'),
+             hoverinfo = 'text',
+             marker = list(colors = colors,
+                           line = list(color = '#FFFFFF', width = 2)),
+             showlegend = TRUE)%>%
+  layout(title = 'Religions Percentage in India',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+p
+############################################################################################################################################################
+############################################################# overAll SEX Ratio ############################################################################
+############################################################################################################################################################
+
+x=c(
+  ((sum(cen$Male)/sum(cen$Population))*100),
+  ((sum(cen$Female)/sum(cen$Population))*100))
+text=c("Male","Female")
+y=data.frame(x)
+library(plotly)
+colors <- rainbow(length(text))
+
+p <- plot_ly(y, labels = text, type = 'pie',values = x,
+             textposition = 'inside',
+             textinfo = 'label+percent',
+             insidetextfont = list(color = '#000000'),
+             hoverinfo = 'text',
+             marker = list(colors = colors,
+                           line = list(color = '#FFFFFF', width = 2)),
+             showlegend = TRUE)%>%
+  layout(title = 'Sex Ratio in India ',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+p
+
+############################################################################################################################################################
+############################################################# overAll Literacy Rate ########################################################################
+############################################################################################################################################################
+x=c(g,h)
+
+g=((sum(cen$Literate)/sum(cen$Population))*100)
+h=100-g
+
+text=c("Literate","Illiterate")
+y=data.frame(x)
+library(plotly)
+colors <- rainbow(length(text))
+
+p <- plot_ly(y, labels = text, type = 'pie',values = x,
+             textposition = 'inside',
+             textinfo = 'label+percent',
+             insidetextfont = list(color = '#000000'),
+             hoverinfo = 'text',
+             marker = list(colors = colors,
+                           line = list(color = '#FFFFFF', width = 2)),
+             showlegend = TRUE)%>%
+  layout(title = 'Literacy Percentage in India ',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+p
 
 
 
